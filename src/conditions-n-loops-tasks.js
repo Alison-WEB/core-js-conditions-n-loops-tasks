@@ -21,8 +21,8 @@
  *  0  => true
  *  -5 => false
  */
-function isPositive(/* number */) {
-  throw new Error('Not implemented');
+function isPositive(number) {
+  return number >= 0;
 }
 
 /**
@@ -38,8 +38,14 @@ function isPositive(/* number */) {
  *  -5, 0, 5      => 5
  *  -0.1, 0, 0.2  => 0.2
  */
-function getMaxNumber(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getMaxNumber(a, b, c) {
+  if (a >= b && a >= c) {
+    return a;
+  }
+  if (b >= a && b >= c) {
+    return b;
+  }
+  return c;
 }
 
 /**
@@ -60,8 +66,16 @@ function getMaxNumber(/* a, b, c */) {
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  */
-function canQueenCaptureKing(/* queen, king */) {
-  throw new Error('Not implemented');
+function canQueenCaptureKing(queen, king) {
+  if (queen.x === king.x || queen.y === king.y) {
+    return true;
+  }
+  const difX = Math.abs(queen.x - king.x);
+  const difY = Math.abs(queen.y - king.y);
+  if (difX === difY) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -82,8 +96,17 @@ function canQueenCaptureKing(/* queen, king */) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  if (a <= 0 || b <= 0 || c <= 0) {
+    return false;
+  }
+  if (a + b <= c || b + c <= a || a + c <= b) {
+    return false;
+  }
+  if (a === b || b === c || c === a) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -100,8 +123,71 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+/**
+function convertToRomanNumerals(num) {
+  let result = '';
+  let newNum = num;
+  const romanNumerals = {
+    1000: 'M',
+    900: 'CM',
+    500: 'D',
+    400: 'CD',
+    100: 'C',
+    90: 'XC',
+    50: 'L',
+    40: 'XL',
+    10: 'X',
+    9: 'IX',
+    5: 'V',
+    4: 'IV',
+    1: 'I',
+  };
+  const keys = Object.keys(romanNumerals);
+  for (let i = 0; i < keys.length; i += 1) {
+    const key = keys[i];
+    if (Object.prototype.hasOwnProperty.call(romanNumerals, key)) {
+      while (newNum >= key) {
+        result += romanNumerals[key];
+        newNum -= key;
+      }
+    }
+  }
+  return result;
+}
+*/
+function convertToRomanNumerals(num) {
+  let result = '';
+  let newNum = num;
+  const romanNumerals = [
+    'X̅',
+    'MX̅',
+    'V̅',
+    'MV̅',
+    'M',
+    'CM',
+    'D',
+    'CD',
+    'C',
+    'XC',
+    'L',
+    'XL',
+    'X',
+    'IX',
+    'V',
+    'IV',
+    'I',
+  ];
+  const arabicNumerals = [
+    10000, 9000, 5000, 4000, 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4,
+    1,
+  ];
+  for (let i = 0; i < romanNumerals.length; i += 1) {
+    while (newNum >= arabicNumerals[i]) {
+      result += romanNumerals[i];
+      newNum -= arabicNumerals[i];
+    }
+  }
+  return result;
 }
 
 /**
