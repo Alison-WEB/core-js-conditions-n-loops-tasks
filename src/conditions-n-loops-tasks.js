@@ -383,8 +383,18 @@ function getIndexOf(str, letter) {
  *  12345, 0    => false
  *  12345, 6    => false
  */
-function isContainNumber(/* num, digit */) {
-  throw new Error('Not implemented');
+function isContainNumber(num, digit) {
+  let result;
+  const numString = String(num);
+  for (let i = 0; i < numString.length; i += 1) {
+    if (numString[i] === String(digit)) {
+      result = true;
+      break;
+    } else {
+      result = false;
+    }
+  }
+  return result;
 }
 
 /**
