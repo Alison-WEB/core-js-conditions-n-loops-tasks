@@ -124,135 +124,8 @@ function isIsoscelesTriangle(a, b, c) {
  *  26  => XXVI
  */
 
-function convertToRomanNumerals(num) {
-  const number = parseInt(num, 10);
-  let result = '';
-  switch (number) {
-    case 1:
-      result = 'I';
-      break;
-    case 2:
-      result = 'II';
-      break;
-    case 3:
-      result = 'III';
-      break;
-    case 4:
-      result = 'IV';
-      break;
-    case 5:
-      result = 'V';
-      break;
-    case 6:
-      result = 'VI';
-      break;
-    case 7:
-      result = 'VII';
-      break;
-    case 8:
-      result = 'VIII';
-      break;
-    case 9:
-      result = 'IX';
-      break;
-    case 10:
-      result = 'X';
-      break;
-    case 11:
-      result = 'XI';
-      break;
-    case 12:
-      result = 'XII';
-      break;
-    case 13:
-      result = 'XIII';
-      break;
-    case 14:
-      result = 'XIV';
-      break;
-    case 15:
-      result = 'XV';
-      break;
-    case 16:
-      result = 'XVI';
-      break;
-    case 17:
-      result = 'XVII';
-      break;
-    case 18:
-      result = 'XVIII';
-      break;
-    case 19:
-      result = 'XIX';
-      break;
-    case 20:
-      result = 'XX';
-      break;
-    case 21:
-      result = 'XXI';
-      break;
-    case 22:
-      result = 'XXII';
-      break;
-    case 23:
-      result = 'XXIII';
-      break;
-    case 24:
-      result = 'XXIV';
-      break;
-    case 25:
-      result = 'XXV';
-      break;
-    case 26:
-      result = 'XXVI';
-      break;
-    case 27:
-      result = 'XXVII';
-      break;
-    case 28:
-      result = 'XXVIII';
-      break;
-    case 29:
-      result = 'XXIX';
-      break;
-    case 30:
-      result = 'XXX';
-      break;
-    case 31:
-      result = 'XXXI';
-      break;
-    case 32:
-      result = 'XXXII';
-      break;
-    case 33:
-      result = 'XXXIII';
-      break;
-    case 34:
-      result = 'XXXIV';
-      break;
-    case 35:
-      result = 'XXXV';
-      break;
-    case 36:
-      result = 'XXXVI';
-      break;
-    case 37:
-      result = 'XXXVII';
-      break;
-    case 38:
-      result = 'XXXVIII';
-      break;
-    case 39:
-      result = 'XXXIX';
-      break;
-    case 40:
-      result = 'XL';
-      break;
-    default:
-      result = 'Please, enter an integer from one to thirty.';
-      break;
-  }
-  return result;
+function convertToRomanNumerals(/* num */) {
+  throw new Error('Not implemented');
 }
 
 /**
@@ -270,10 +143,62 @@ function convertToRomanNumerals(num) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
 
+function convertNumberToString(numberStr) {
+  let result = '';
+  if (Number.isNaN(numberStr)) {
+    result = 'Please, check that you have entered a number';
+    return result;
+  }
+  for (let i = 0; i < numberStr.length; i += 1) {
+    switch (numberStr[i]) {
+      case '1':
+        result += 'one';
+        break;
+      case '2':
+        result += 'two';
+        break;
+      case '3':
+        result += 'three';
+        break;
+      case '4':
+        result += 'four';
+        break;
+      case '5':
+        result += 'five';
+        break;
+      case '6':
+        result += 'six';
+        break;
+      case '7':
+        result += 'seven';
+        break;
+      case '8':
+        result += 'eight';
+        break;
+      case '9':
+        result += 'nine';
+        break;
+      case '0':
+        result += 'zero';
+        break;
+      case '.':
+      case ',':
+        result += 'point';
+        break;
+      case '-':
+        result += 'minus';
+        break;
+      default:
+        result = '';
+        break;
+    }
+    if (i !== numberStr.length - 1) {
+      result += ' ';
+    }
+  }
+  return result;
 }
-
 /**
  * Determines whether a string is a palindrome.
  * In this task, the use of methods of the String and Array classes is not allowed.
